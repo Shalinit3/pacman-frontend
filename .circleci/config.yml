@@ -1,0 +1,21 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.11.1
+    steps:
+      - checkout
+      - run:
+          name: install packages
+          command: |
+            yarn
+      - run:
+          name: Code Linting
+          command: yarn lint
+
+workflows:
+  version: 2
+  pacman-frontend-build:
+    jobs:
+      - build
+
